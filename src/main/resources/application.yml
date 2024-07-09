@@ -1,0 +1,15 @@
+server:
+  port: 8090
+
+spring:
+  application.name: social-network
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/social_network
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+
+

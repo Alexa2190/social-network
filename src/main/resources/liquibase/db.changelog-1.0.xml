@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="Creating User_Info" author="mashtakovaak">
+        <createTable tableName="user_info">
+            <column name="id" type="uuid" autoIncrement="false" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)"/>
+            <column name="second_name" type="varchar(255)"/>
+            <column name="gender" type="varchar(10)"/>
+            <column name="city" type="varchar(255)"/>
+            <column name="biography" type="varchar(255)"/>
+            <column name="birth_date" type="Date"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Creating Auth_Info" author="mashtakovaak">
+        <createTable tableName="auth_table">
+            <column name="id" type="uuid" autoIncrement="false" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(255)"/>
+            <column name="password" type="varchar(255)"/>
+            <column name="token" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

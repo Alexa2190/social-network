@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "e8da6f1f-2d41-463e-86ea-e7116b3f9fd8",
+		"name": "Highload_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12661379"
+	},
+	"item": [
+		{
+			"name": "User registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"first_name\": \"Кот\",\n  \"second_name\": \"Собака\",\n  \"birth_date\": \"2018-04-08\",\n  \"biography\": \"Бег, мяукание\",\n  \"city\": \"Москва\",\n  \"gender\": \"MALE\",\n  \"password\": \"cat2191\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"6974be6f-e16a-4c11-92ef-9d40966ecc3b\",\n    \"password\": \"cat2191\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "78f2cee5-9a53-41ce-9c9c-b6cbd41923f4",
+						"type": "text"
+					},
+					{
+						"key": "user_id",
+						"value": "6974be6f-e16a-4c11-92ef-9d40966ecc3b",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8090/user/get/{{userId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"user",
+						"get",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userId",
+			"value": "6974be6f-e16a-4c11-92ef-9d40966ecc3b",
+			"type": "string"
+		}
+	]
+}
