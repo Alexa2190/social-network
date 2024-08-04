@@ -1,4 +1,4 @@
-package ru.phoenixflame.social_network;
+package ru.phoenixflame.socialnetwork;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
