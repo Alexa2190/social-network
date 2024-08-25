@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import ru.phoenixflame.socialnetwork.entity.UserEntity;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -20,5 +21,11 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
                    VALUES (?1, ?2, ?3, ?4, ?5, ?6) RETURNING *
                    """, nativeQuery = true)
     UserEntity addUser(String firstName, String secondName, String biography, String gender, LocalDate birthDate, String city);
+
+
+    @Query(value = """ 
+                   SELECT * FROM user_info WHERE LOWER(first_name) LIKE CONCAT(LOWER(?1), '%') and LOWER(second_name) LIKE CONCAT(LOWER(?2), '%') ORDER BY id DESC
+                   """, nativeQuery = true)
+    List<UserEntity> findUsersByFistNameAndSecondName(String firstName, String secondName);
 
 }

@@ -21,10 +21,9 @@ public class AuthFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         String uri = req.getRequestURI();
 
-        if("/login".equals(uri) || "/user/register".equals(uri)) {
+        if("/login".equals(uri) || "/user/register".equals(uri) || "/user/search".equals(uri)) {
             filterChain.doFilter(servletRequest, servletResponse);
         }
-
         if (req.getHeader("Authorization") != null) {
             String token = req.getHeader("Authorization");
             String userId = req.getHeader("user_id");

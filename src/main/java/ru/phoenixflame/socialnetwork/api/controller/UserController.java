@@ -13,6 +13,7 @@ import ru.phoenixflame.socialnetwork.api.dto.response.UserResponse;
 import ru.phoenixflame.socialnetwork.service.UserService;
 
 import javax.servlet.UnavailableException;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +23,12 @@ public class UserController {
     @GetMapping(value = "/user/get/{id}")
     public FullUserResponse getUser(@PathVariable String id) {
         return userService.getUserById(id);
+    }
+
+    @GetMapping(value = "/user/search")
+    public List<FullUserResponse> getUsers(@RequestParam(name = "first_name") String firstName,
+                                           @RequestParam(name = "second_name") String secondName) {
+        return userService.getUsersByFirstNameAndSecondName(firstName, secondName);
     }
 
     @PostMapping(value = "/user/register",

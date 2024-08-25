@@ -12,7 +12,10 @@ import ru.phoenixflame.socialnetwork.repository.UserRepository;
 import ru.phoenixflame.socialnetwork.utils.Utils;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +35,25 @@ public class UserService {
                 .findUserById(id)
                 .orElseThrow(() -> new EntityNotFoundException(UserEntity.class.getSimpleName() + " not found"));
         return userMapper(userEntity);
+    }
+
+    /**
+     * List of users
+     *
+     * @param firstName - first name
+     * @param secondName - second namd
+     * @return list of suitable users
+     */
+    public List<FullUserResponse> getUsersByFirstNameAndSecondName(String firstName, String secondName) {
+        List<FullUserResponse> userResponseList = new ArrayList<>();
+        List<UserEntity> userEntityList = userRepository.findUsersByFistNameAndSecondName(firstName, secondName);
+        if(!userEntityList.isEmpty()) {
+            userResponseList = userEntityList
+                    .stream()
+                    .map(this::userMapper)
+                    .collect(Collectors.toList());
+        }
+        return userResponseList;
     }
 
     /**
